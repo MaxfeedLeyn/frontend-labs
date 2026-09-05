@@ -1,3 +1,8 @@
+# Результат
+
+<img width="421" height="321" alt="image" src="https://github.com/user-attachments/assets/992d0898-689c-49b2-897c-a71237a65fd7" />
+
+
 # Технічне завдання
 
 ## Лабораторна робота №2
