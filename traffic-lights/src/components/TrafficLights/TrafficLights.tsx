@@ -5,7 +5,10 @@ import css from "./TrafficLights.module.css";
 
 const TrafficLights = ({ flexDirection = "column" }) => {
   return (
-    <div className={css.trafficLight}>
+    <div
+      className={css.trafficLight}
+      style={{ "--traffic-light-direction": flexDirection }}
+    >
       <Light color="red" />
       <Light color="yellow" />
       <Light color="green" />
@@ -14,8 +17,7 @@ const TrafficLights = ({ flexDirection = "column" }) => {
 };
 
 TrafficLights.propTypes = {
-    flexDirection: PropTypes.string,
-}
-
+  flexDirection: PropTypes.string,
+};
 
 export default TrafficLights;

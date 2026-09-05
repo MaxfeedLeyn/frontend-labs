@@ -1,0 +1,9 @@
+.section {
+  padding: 20px;
+}
+
+.laba1 {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}

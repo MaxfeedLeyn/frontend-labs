@@ -1,0 +1,7 @@
+.trafficLight{
+    padding: 10px;
+    background-color: black;
+    display: flex;
+    gap: 10px;
+    flex-direction: var(--traffic-light-direction);
+}
