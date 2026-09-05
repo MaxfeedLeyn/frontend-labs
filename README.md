@@ -1,41 +1,78 @@
-# Технічне завдання
+# React + TypeScript + Vite
 
-## Лабораторна робота №1
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-### Назва
+Currently, two official plugins are available:
 
-Налаштування робочого середовища
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-### Мета
+## React Compiler
 
-Навчитись налаштовувати робоче середовище для розробки, використовувати git, створювати базові проєкти за допомогою React (Vite) та оформлювати звіти.
+The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
 
-### Завдання
+Note: This will impact Vite dev & build performances.
+You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
 
-1. **Встановлення та оновлення програмного забезпечення:**
-   - Встановити або оновити Node.js до останньої стабільної версії.
-   - Встановити або оновити git до останньої стабільної версії.
-   - Встановити або оновити обраний редактор коду (Visual Studio Code, WebStorm тощо).
+## Expanding the ESLint configuration
 
-2. **Робота з репозиторієм:**
-   - Клонувати репозиторій лабораторної роботи з наданого посилання.
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-3. **Створення React-проєкту:**
-   - У клонованій директорії створити новий React-проєкт за допомогою [Vite](https://vitejs.dev/guide/), використовуючи назву "laba1".
+```js
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
 
-4. **Оформлення звіту:**
-   - Оформити звіт на локальному комп'ютері, роблячи commit після виконання кожного пункту завдання.
+      // Remove tseslint.configs.recommended and replace with this
+      tseslint.configs.recommendedTypeChecked,
+      // Alternatively, use this for stricter rules
+      tseslint.configs.strictTypeChecked,
+      // Optionally, add this for stylistic rules
+      tseslint.configs.stylisticTypeChecked,
 
-5. **Відправка роботи:**
-   - Завантажити репозиторій з виконаною роботою у GitHub Classroom.
-   - Додати посилання на звіт у Google Classroom.
+      // Other configs...
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
 
-### Результат
+```
 
-1. Проєкт у репозиторії GitHub, що містить:
-   - React-проєкт із початковою структурою, створеною через Vite.
-   - Історію комітів, що відображає послідовність виконання завдання.
-2. Посилання на репозиторій у Google Classroom.
+You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
 
----
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
 
+export default defineConfig([
+  globalIgnores(['dist']),
+  {
+    files: ['**/*.{ts,tsx}'],
+    extends: [
+      // Other configs...
+      // Enable lint rules for React
+      reactX.configs['recommended-typescript'],
+      // Enable lint rules for React DOM
+      reactDom.configs.recommended,
+    ],
+    languageOptions: {
+      parserOptions: {
+        project: ['./tsconfig.node.json', './tsconfig.app.json'],
+        tsconfigRootDir: import.meta.dirname,
+      },
+      // other options...
+    },
+  },
+])
+
+```
