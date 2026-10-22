@@ -1,0 +1,9 @@
+.trafficLightOrientationsList{
+    display: flex;
+}
+
+.trafficLightOrientationButton{
+    height: 60px;
+    width: 300px;
+
+}

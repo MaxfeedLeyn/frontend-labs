@@ -4,3 +4,7 @@
   border-radius: 50%;
   background-color: var(--light-color);
 }
+
+.inactive {
+  opacity: 0.3;
+}
