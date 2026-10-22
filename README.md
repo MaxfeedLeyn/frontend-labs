@@ -1,6 +1,7 @@
 # Результат
 
-<img width="421" height="321" alt="image" src="https://github.com/user-attachments/assets/992d0898-689c-49b2-897c-a71237a65fd7" />
+<img width="614" height="245" alt="image" src="https://github.com/user-attachments/assets/8bbaf497-e654-48e4-bcd1-9bf84af5f495" />
+
 
 
 # Технічне завдання
