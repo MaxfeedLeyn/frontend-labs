@@ -1,5 +1,6 @@
 .trafficLight{
     padding: 10px;
+    width: fit-content;
     background-color: black;
     display: flex;
     gap: 10px;

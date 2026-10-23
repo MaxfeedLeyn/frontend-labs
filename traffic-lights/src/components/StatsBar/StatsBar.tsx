@@ -3,19 +3,21 @@ import css from "./StatsBar.module.css";
 
 import type { StatsManager } from "../../types/StatManager";
 
-const StatsBar = ({
-  redCount,
-  yellowCount,
-  greenCount,
-  totalCount,
-}: StatsManager) => {
+interface StatsBarProps extends StatsManager {
+  direction: "row" | "column";
+}
+
+const StatsBar = ({ redCount, yellowCount, greenCount, totalCount, direction
+}: StatsBarProps) => {
   return (
     <div className={css.statsBar}>
-      <ul>
-        <li>Red: {redCount}</li>
-        <li>Yellow: {yellowCount}</li>
-        <li>Green: {greenCount}</li>
-        <li>Total: {totalCount}</li>
+      <ul className={css.statsList}>
+        <div style={{ flexDirection: direction }} className={css.mainStatsTitle}>
+          <li className={`${css.statsItem} ${css.redItem}`}>Red: {redCount}</li>
+          <li className={`${css.statsItem} ${css.yellowItem}`}>Yellow: {yellowCount}</li>
+          <li className={`${css.statsItem} ${css.greenItem}`}>Green: {greenCount}</li>
+        </div>
+        <li className={css.statsItem}>Total: {totalCount}</li>
       </ul>
     </div>
   );
@@ -26,7 +28,7 @@ StatsBar.propTypes = {
   yellowCount: PropTypes.number.isRequired,
   greenCount: PropTypes.number.isRequired,
   totalCount: PropTypes.number.isRequired,
-  currentLight: PropTypes.oneOf(["red", "yellow", "green"]).isRequired,
+  direction: PropTypes.oneOf(["row", "column"]),
 };
 
 export default StatsBar;

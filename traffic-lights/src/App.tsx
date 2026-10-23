@@ -44,10 +44,13 @@ function App() {
   return (
     <>
       <Header onOrientationChange={setOrientation} />
-      <section className={`${css.section} ${css.laba1}`}>
-        <TrafficLights flexDirection={orientation} handleLightChange={handleLightChange} />
+      <section style={{ flexDirection: orientation === "row" ? "column" : "row" }} className={`${css.section} ${css.laba1}`}>
+        <div className={css.trafficLightsContainer}>
+          <TrafficLights flexDirection={orientation} handleLightChange={handleLightChange} />
+        </div>
+        <StatsBar {...StatsManager} direction={orientation} />
       </section>
-      <StatsBar {...StatsManager} />
+
     </>
   );
 }

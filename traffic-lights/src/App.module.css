@@ -1,8 +1,11 @@
 .section {
+  display: flex;
+  gap: 20px;
+  align-items: center;
   padding: 20px;
 }
 
-.laba1 {
+.label {
   display: flex;
   gap: 30px;
   align-items: center;
