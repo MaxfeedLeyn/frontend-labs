@@ -6,14 +6,12 @@ import type { ColorLight } from "../../types/colorLight";
 interface LightProps {
   color?: ColorLight;
   isActive: boolean;
-  setActiveLight: (color: ColorLight) => void;
   handleLightChange: (newLight: ColorLight) => void;
 }
 
 const Light = ({
   color = "red",
   isActive = false,
-  setActiveLight,
   handleLightChange,
 }: LightProps) => {
   return (
@@ -21,7 +19,6 @@ const Light = ({
       className={`${css.trafficLightUnit} ${isActive ? css.active : css.inactive}`}
       style={{ "--light-color": color }}
       onClick={() => {
-        setActiveLight(color);
         handleLightChange(color);
       }}
     ></div>

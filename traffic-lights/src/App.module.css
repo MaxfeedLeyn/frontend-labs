@@ -10,3 +10,10 @@
   gap: 30px;
   align-items: center;
 }
+
+.trafficLightsContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
