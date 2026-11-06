@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import Layout from "./templates/Layout";
-import HomePage from "./pages/HomePage";
-import StatsPage from "./pages/StatsPage";
-import TrafficLightsPage from "./pages/TrafficLightsPage";
-import NotFound from "./pages/NotFound";
+import HomePage from "./pages/HomePage/HomePage";
+import StatsPage from "./pages/StatsPage/StatsPage";
+import TrafficLightPage from "./pages/TrafficLightPage/TrafficLightPage";
+import NotFound from "./pages/NotFoundPage/NotFoundPage";
 
 import { TrafficLightProvider } from "./components/TrafficLightProvider/TrafficLightProvider";
 
@@ -16,17 +16,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="stats" element={<StatsPage />} />
-            <Route path="traffic-lights" element={<TrafficLightsPage />} />
+            <Route path="traffic-lights" element={<TrafficLightPage />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-        {/* <Header onOrientationChange={setOrientation} />
-        <section style={{ flexDirection: orientation === "row" ? "column" : "row" }} className={`${css.section} ${css.laba1}`}>
-          <div className={css.trafficLightsContainer}>
-            <TrafficLights flexDirection={orientation} handleLightChange={handleLightChange} />
-          </div>
-          <StatsBar {...StatsManager} direction={orientation} />
-        </section> */}
       </TrafficLightProvider>
     </BrowserRouter>
   );

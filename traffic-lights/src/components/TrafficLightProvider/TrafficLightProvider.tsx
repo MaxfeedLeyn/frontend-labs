@@ -11,17 +11,25 @@ interface TrafficLightContextType {
   handleLightChange: (newLight: ColorLight) => void;
 }
 
-const TrafficLightContext = createContext<TrafficLightContextType | undefined>(undefined);
+const TrafficLightContext = createContext<TrafficLightContextType | undefined>(
+  undefined,
+);
 
 export const useTrafficLightContext = () => {
   const context = useContext(TrafficLightContext);
   if (!context) {
-    throw new Error("useTrafficLightContext must be used within a TrafficLightProvider");
+    throw new Error(
+      "useTrafficLightContext must be used within a TrafficLightProvider",
+    );
   }
   return context;
 };
 
-export function TrafficLightProvider({ children }: { children: React.ReactNode }) {
+export function TrafficLightProvider({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
   const [orientation, setOrientation] = useState<Orientation>("column");
 
   const [StatsManager, setStatsManager] = useState<StatsManager>({
@@ -51,10 +59,12 @@ export function TrafficLightProvider({ children }: { children: React.ReactNode }
       return updatedStats;
     });
   };
-    
-    return (
-        <TrafficLightContext.Provider value={{ orientation, setOrientation, StatsManager, handleLightChange }}>
-            {children}
-        </TrafficLightContext.Provider>
-    )
+
+  return (
+    <TrafficLightContext.Provider
+      value={{ orientation, setOrientation, StatsManager, handleLightChange }}
+    >
+      {children}
+    </TrafficLightContext.Provider>
+  );
 }
