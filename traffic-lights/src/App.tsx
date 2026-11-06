@@ -6,12 +6,12 @@ import StatsPage from "./pages/StatsPage";
 import TrafficLightsPage from "./pages/TrafficLightsPage";
 import NotFound from "./pages/NotFound";
 
-import TrafficLightsProvider from "./components/TrafficLights/TrafficLightsProvider";
+import { TrafficLightProvider } from "./components/TrafficLightProvider/TrafficLightProvider";
 
 function App() {
   return (
     <BrowserRouter>
-      <TrafficLightsProvider>
+      <TrafficLightProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
@@ -27,7 +27,7 @@ function App() {
           </div>
           <StatsBar {...StatsManager} direction={orientation} />
         </section> */}
-      </TrafficLightsProvider>
+      </TrafficLightProvider>
     </BrowserRouter>
   );
 }

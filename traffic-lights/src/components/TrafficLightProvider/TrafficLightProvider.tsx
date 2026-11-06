@@ -58,11 +58,3 @@ export function TrafficLightProvider({ children }: { children: React.ReactNode }
         </TrafficLightContext.Provider>
     )
 }
-
-export function useTrafficLightProvider() {
-    const context = useContext(TrafficLightContext);
-    if (!context) {
-        throw new Error("useTrafficLightProvider must be used within a TrafficLightProvider");
-    }
-    return context;
-}
