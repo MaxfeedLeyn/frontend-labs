@@ -1,41 +1,45 @@
-import Props from "prop-types";
 import css from "./Header.module.css";
+import { NavLink } from "react-router";
 
-import type { Orientation } from "../../types/orientations";
-
-interface HeaderProps {
-  onOrientationChange: (orientation: Orientation) => void;
-}
-
-const Header = ({ onOrientationChange }: HeaderProps) => {
+const Header = () => {
   return (
     <header className={css.header}>
       <nav className={css.nav}>
         <ul className={css.trafficLightOrientationsList}>
           <li className={css.trafficLightOrientationsItem}>
-            <button
-              className={css.trafficLightOrientationButton}
-              onClick={() => onOrientationChange("column")}
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                isActive ? css.activeLink : undefined
+              }
             >
-              Vertical
-            </button>
+              Home
+            </NavLink>
           </li>
           <li className={css.trafficLightOrientationsItem}>
-            <button
-              className={css.trafficLightOrientationButton}
-              onClick={() => onOrientationChange("row")}
+            <NavLink
+              to="/traffic-lights"
+              className={({ isActive }) =>
+                isActive ? css.activeLink : undefined
+              }
             >
-              Horizontal
-            </button>
+              Traffic Light
+            </NavLink>
+          </li>
+          <li className={css.trafficLightOrientationsItem}>
+            <NavLink
+              to="/stats"
+              className={({ isActive }) =>
+                isActive ? css.activeLink : undefined
+              }
+            >
+              Stats
+            </NavLink>
           </li>
         </ul>
       </nav>
     </header>
   );
-};
-
-Header.propTypes = {
-  onOrientationChange: Props.func.isRequired,
 };
 
 export default Header;

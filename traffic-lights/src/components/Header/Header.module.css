@@ -1,9 +1,31 @@
-.trafficLightOrientationsList{
-    display: flex;
-    background-color: black;
+.header {
+  height: 60px;
 }
 
-.trafficLightOrientationButton{
-    height: 60px;
-    width: 300px;
+.nav {
+  height: 100%;
+}
+
+.trafficLightOrientationsList {
+  display: flex;
+  background-color: black;
+  height: 100%;
+}
+
+.trafficLightOrientationsItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  background-color: white;
+  border: 1px solid black;
+}
+
+.trafficLightOrientationsItem:has(> .activeLink) {
+  background-color: gray;
+  color: white;
+}
+
+a {
+  padding: 20px;
 }
