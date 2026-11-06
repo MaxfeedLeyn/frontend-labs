@@ -10,24 +10,36 @@ function TrafficLightPage() {
   return (
     <div className={css.trafficLightPage}>
       <h1>Traffic Light Page</h1>
-      <div className={css.trafficLightsContainer}>
-        <TrafficLights
-          flexDirection={orientation}
-          handleLightChange={handleLightChange}
-        />
-        <TrafficLights
-          flexDirection={orientation}
-          handleLightChange={handleLightChange}
-        />
-        <TrafficLights
-          flexDirection={orientation}
-          handleLightChange={handleLightChange}
-        />
-      </div>
-      <div className={css.orientationButtons}>
-        <button onClick={() => setOrientation("row")}>Row</button>
-        <button onClick={() => setOrientation("column")}>Column</button>
-      </div>
+      <section className={css.hero}>
+        <div className={css.trafficLightsContainer}>
+          <TrafficLights
+            flexDirection={orientation}
+            handleLightChange={handleLightChange}
+          />
+          <TrafficLights
+            flexDirection={orientation}
+            handleLightChange={handleLightChange}
+          />
+          <TrafficLights
+            flexDirection={orientation}
+            handleLightChange={handleLightChange}
+          />
+        </div>
+        <div className={css.orientationButtons}>
+          <button
+            className={css.orientationButton}
+            onClick={() => setOrientation("row")}
+          >
+            Horizontal
+          </button>
+          <button
+            className={css.orientationButton}
+            onClick={() => setOrientation("column")}
+          >
+            Vertical
+          </button>
+        </div>
+      </section>
     </div>
   );
 }
