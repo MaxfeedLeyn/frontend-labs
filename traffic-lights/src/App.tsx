@@ -1,9 +1,3 @@
-// import TrafficLights from "./components/TrafficLights/TrafficLights";
-// import css from "./App.module.css";
-
-// import StatsBar from "./components/StatsBar/StatsBar";
-// import Header from "./components/Header/Header";
-
 import { BrowserRouter, Routes, Route } from "react-router";
 
 import Layout from "./templates/Layout";
@@ -12,60 +6,28 @@ import StatsPage from "./pages/StatsPage";
 import TrafficLightsPage from "./pages/TrafficLightsPage";
 import NotFound from "./pages/NotFound";
 
-import { useState } from "react";
-
-import type { ColorLight } from "./types/colorLight";
-import type { Orientation } from "./types/orientations";
-import type { StatsManager } from "./types/StatManager";
+import TrafficLightsProvider from "./components/TrafficLights/TrafficLightsProvider";
 
 function App() {
-  const [orientation, setOrientation] = useState<Orientation>("column");
-
-  const [StatsManager, setStatsManager] = useState<StatsManager>({
-    redCount: 0,
-    yellowCount: 0,
-    greenCount: 0,
-    totalCount: 0,
-  });
-
-  const handleLightChange = (newLight: ColorLight) => {
-    setStatsManager((prevStats) => {
-      const updatedStats = { ...prevStats };
-      updatedStats.totalCount += 1;
-
-      switch (newLight) {
-        case "red":
-          updatedStats.redCount += 1;
-          break;
-        case "yellow":
-          updatedStats.yellowCount += 1;
-          break;
-        case "green":
-          updatedStats.greenCount += 1;
-          break;
-      }
-
-      return updatedStats;
-    });
-  };
-
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="stats" element={<StatsPage {...StatsManager} />} />
-          <Route path="traffic-lights" element={<TrafficLightsPage />} />
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
-      {/* <Header onOrientationChange={setOrientation} />
-      <section style={{ flexDirection: orientation === "row" ? "column" : "row" }} className={`${css.section} ${css.laba1}`}>
-        <div className={css.trafficLightsContainer}>
-          <TrafficLights flexDirection={orientation} handleLightChange={handleLightChange} />
-        </div>
-        <StatsBar {...StatsManager} direction={orientation} />
-      </section> */}
+      <TrafficLightsProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="stats" element={<StatsPage />} />
+            <Route path="traffic-lights" element={<TrafficLightsPage />} />
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+        {/* <Header onOrientationChange={setOrientation} />
+        <section style={{ flexDirection: orientation === "row" ? "column" : "row" }} className={`${css.section} ${css.laba1}`}>
+          <div className={css.trafficLightsContainer}>
+            <TrafficLights flexDirection={orientation} handleLightChange={handleLightChange} />
+          </div>
+          <StatsBar {...StatsManager} direction={orientation} />
+        </section> */}
+      </TrafficLightsProvider>
     </BrowserRouter>
   );
 }
