@@ -1,0 +1,34 @@
+.statsPage{
+    padding: 10px;
+}
+
+.infoList{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoItem{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.lightColor{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background-color: black;
+}
+
+.red{
+    background-color: red;
+}
+
+.yellow{
+    background-color: #FDDA0D;
+}
+
+.green{
+    background-color: green;
+}

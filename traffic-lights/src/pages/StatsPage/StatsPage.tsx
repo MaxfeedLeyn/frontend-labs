@@ -7,10 +7,23 @@ function StatsPage() {
   return (
     <div className={css.statsPage}>
       <h1>Stats Page</h1>
-      <p>Red Lights: {StatsManager.redCount}</p>
-      <p>Yellow Lights: {StatsManager.yellowCount}</p>
-      <p>Green Lights: {StatsManager.greenCount}</p>
-      <p>Total Lights: {StatsManager.totalCount}</p>
+      <ul className={css.infoList}>
+        <li className={css.infoItem}>
+          <div className={`${css.lightColor} ${css.red}`}></div>Red Lights:{" "}
+          {StatsManager.redCount}
+        </li>
+        <li className={css.infoItem}>
+          <div className={`${css.lightColor} ${css.yellow}`}></div>Yellow Lights:{" "}
+          {StatsManager.yellowCount}
+        </li>
+        <li className={css.infoItem}>
+          <div className={`${css.lightColor} ${css.green}`}></div>Green Lights:{" "}
+          {StatsManager.greenCount}
+        </li>
+        <li className={css.infoItem}>
+          Total Lights: {StatsManager.totalCount}
+        </li>
+      </ul>
     </div>
   );
 }
